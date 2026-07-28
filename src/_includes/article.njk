@@ -1,0 +1,44 @@
+---
+layout: base.njk
+---
+<article class="article">
+  <div class="stamp-row">
+    <span class="date-mono">{{ date | readableDate }}</span>
+    {% for tag in tags %}
+    <span class="tag-pill" style="background: {{ tag | tagColor }}; color: {{ tag | tagTextColor }};">{{ tag }}</span>
+    {% endfor %}
+  </div>
+  <h1 class="article-title">{{ title }}<span class="cursor"></span></h1>
+  <p class="byline">by {{ author or "Oliver" }}</p>
+
+  <div class="article-body">
+    {{ content | safe }}
+  </div>
+
+  <section class="comments">
+    <h2 class="comments-heading">Comments</h2>
+    <!--
+      GISCUS SETUP (do this once your GitHub repo exists):
+      1. Turn on Discussions for your repo: repo Settings → General → Features → Discussions
+      2. Go to https://giscus.app, fill in your repo name, and it will generate a
+         <script> snippet with your specific data-repo-id and data-category-id values.
+      3. Replace the placeholder attributes below with the ones giscus.app gives you.
+    -->
+    <script src="https://giscus.app/client.js"
+      data-repo="YOUR-USERNAME/YOUR-REPO-NAME"
+      data-repo-id="REPLACE-WITH-VALUE-FROM-GISCUS-APP"
+      data-category="Announcements"
+      data-category-id="REPLACE-WITH-VALUE-FROM-GISCUS-APP"
+      data-mapping="pathname"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="light"
+      data-lang="en"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </section>
+
+  <a class="back-link" href="/">&larr; back to all writing</a>
+</article>
