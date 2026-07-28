@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if title %}{{ title }} · I Like Writing{% else %}I Like Writing{% endif %}</title>
+  <meta name="description" content="{{ excerpt or site.description }}">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <meta property="og:type" content="{% if excerpt %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ site.name }}{% endif %}">
+  <meta property="og:description" content="{{ excerpt or site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}/og-image.png">
+  <meta property="og:site_name" content="{{ site.name }}">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if title %}{{ title }}{% else %}{{ site.name }}{% endif %}">
+  <meta name="twitter:description" content="{{ excerpt or site.description }}">
+  <meta name="twitter:image" content="{{ site.url }}/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    {% if page.url == "/" %}
+    <a class="wordmark typing" href="/"><span id="typed-title"></span><span class="cursor"></span></a>
+    {% else %}
+    <a class="wordmark" href="/">I Like <span class="accent-mark">Writing</span></a>
+    {% endif %}
+    <p class="tagline">short essays, articles, and other works of mine. sometimes i have help.</p>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-footer">
+    <p>I Like Writing &mdash; built by hand, published on purpose.</p>
+  </footer>
+
+  {% if page.url == "/" %}
+  <script>
+    (function () {
+      var target = document.getElementById("typed-title");
+      if (!target) return;
+
+      var typoOptions = [
+        "i like writting.",   // doubled letter
+        "i lkie writing.",    // transposed letters
+        "i like wirting.",    // transposed letters
+        "i liek writing.",    // transposed letters
+        "i like writingg.",   // doubled letter at the end
+        "i like writng."      // missing letter
+      ];
+      var typo = typoOptions[Math.floor(Math.random() * typoOptions.length)];
+      var correct = "i like writing.";
+      var typingSpeed = 75;
+      var backspaceSpeed = 55;
+      var pauseAfterTypo = 550;
+      var pauseBeforeRetype = 220;
+
+      // Find how much of the typo is actually correct, so we only
+      // backspace the part that's wrong, not the whole word.
+      var prefixLen = 0;
+      while (
+        prefixLen < typo.length &&
+        prefixLen < correct.length &&
+        typo[prefixLen] === correct[prefixLen]
+      ) {
+        prefixLen++;
+      }
+
+      function typeChar(str, index, cb) {
+        if (index < str.length) {
+          target.textContent += str[index];
+          setTimeout(function () {
+            typeChar(str, index + 1, cb);
+          }, typingSpeed);
+        } else {
+          cb();
+        }
+      }
+
+      function backspaceTo(finalLength, cb) {
+        if (target.textContent.length > finalLength) {
+          target.textContent = target.textContent.slice(0, -1);
+          setTimeout(function () {
+            backspaceTo(finalLength, cb);
+          }, backspaceSpeed);
+        } else {
+          cb();
+        }
+      }
+
+      typeChar(typo, 0, function () {
+        setTimeout(function () {
+          backspaceTo(prefixLen, function () {
+            setTimeout(function () {
+              typeChar(correct, prefixLen, function () {});
+            }, pauseBeforeRetype);
+          });
+        }, pauseAfterTypo);
+      });
+    })();
+  </script>
+  {% endif %}
+</body>
+</html>
