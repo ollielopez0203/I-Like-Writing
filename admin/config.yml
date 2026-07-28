@@ -1,0 +1,36 @@
+backend:
+  name: git-gateway
+  branch: main
+
+publish_mode: editorial_workflow
+
+# Where uploaded photos are saved, and the URL path used to reference them
+media_folder: "src/images"
+public_folder: "/images"
+
+collections:
+  - name: "articles"
+    label: "Articles"
+    label_singular: "Article"
+    folder: "src/articles"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string", default: "Oliver" }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        default: ["essay"]
+        hint: "e.g. essay, op-ed, politics, culture — used for the filter bar"
+      - { label: "Excerpt (shown on the homepage card)", name: "excerpt", widget: "text", required: false }
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        hint: >
+          To add a photo, quote, or embed anywhere in the text, drop in one of these lines:
+          {% media "image", "/images/yourfile.jpg", "Caption" %}
+          {% media "quote", "The excerpt text.", "Source" %}
+          {% media "audio", "https://open.spotify.com/embed/track/XXXX", "Caption" %}
+          {% media "video", "https://www.youtube.com/embed/XXXX", "Caption" %}
