@@ -1,0 +1,44 @@
+---
+layout: base.njk
+title: null
+---
+<div class="filter-bar" id="filter-bar">
+  <button class="pill pill-all active" data-tag="all">all</button>
+  {% for tag in collections.tagList %}
+  <button class="pill" data-tag="{{ tag }}" style="--pill-color: {{ tag | tagColor }}; --pill-text: {{ tag | tagTextColor }};">{{ tag }}</button>
+  {% endfor %}
+</div>
+
+<div class="feed" id="feed">
+  {% for article in collections.articles %}
+  <a class="card" href="{{ article.url }}" data-tags="{{ article.data.tags | join(',') }}">
+    <div class="stamp-row">
+      <span class="date-mono">{{ article.data.date | readableDate }}</span>
+      {% for tag in article.data.tags %}
+      <span class="tag-pill" style="background: {{ tag | tagColor }}; color: {{ tag | tagTextColor }};">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    <h2 class="card-title">{{ article.data.title }}</h2>
+    <p class="card-byline">by {{ article.data.author or "Oliver" }}</p>
+    {% if article.data.excerpt %}
+    <p class="card-excerpt">{{ article.data.excerpt }}</p>
+    {% endif %}
+  </a>
+  {% endfor %}
+</div>
+
+<script>
+  const buttons = document.querySelectorAll("#filter-bar .pill");
+  const cards = document.querySelectorAll("#feed .card");
+  buttons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      buttons.forEach(function (b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+      const tag = btn.dataset.tag;
+      cards.forEach(function (card) {
+        const tags = card.dataset.tags.split(",");
+        card.style.display = (tag === "all" || tags.includes(tag)) ? "" : "none";
+      });
+    });
+  });
+</script>
