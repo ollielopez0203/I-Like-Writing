@@ -1,0 +1,300 @@
+:root {
+  --ink: #1C1C1C;
+  --paper: #F6F5F2;
+  --paper-dim: #ECEAE5;
+  --accent-red: #B23A2E;
+  --accent-teal: #4C7A80;
+  --highlight: #4C7A80;
+  --border: #1C1C1C;
+
+  --font-display: "Archivo Black", sans-serif;
+  --font-body: "Source Serif 4", serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+a { color: inherit; }
+
+/* ---------- Header ---------- */
+
+.site-header {
+  padding: 2.5rem 1.5rem 1.5rem;
+  border-bottom: 3px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.wordmark {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4.5vw, 2.5rem);
+  text-decoration: none;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.accent-mark {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--accent-red);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+.wordmark.typing {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.85em;
+  background: var(--accent-red);
+  vertical-align: middle;
+  margin-left: 3px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.tagline {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink);
+  opacity: 0.65;
+  margin: 0;
+  text-align: right;
+  max-width: 260px;
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .tagline {
+    text-align: center;
+    max-width: none;
+  }
+}
+
+/* ---------- Layout shell ---------- */
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.site-footer {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  opacity: 0.6;
+  padding: 2rem 1rem 3rem;
+}
+
+/* ---------- Filter bar ---------- */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2.25rem;
+}
+
+.pill {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  border: 2px solid var(--border);
+  background: transparent;
+  color: var(--ink);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.pill.active,
+.pill:hover {
+  background: var(--pill-color, var(--highlight));
+  border-color: var(--ink);
+  color: var(--pill-text, var(--paper));
+}
+
+.pill-all.active,
+.pill-all:hover {
+  background: var(--paper-dim);
+  border-width: 3px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ---------- Feed / cards ---------- */
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 1.4rem 1.5rem;
+  background: var(--paper);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin: 0.5rem 0 0.5rem;
+  line-height: 1.15;
+}
+
+.card-excerpt {
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* ---------- Stamp row (date + tag pills) ---------- */
+
+.stamp-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.date-mono {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  opacity: 0.65;
+  margin-right: 0.2rem;
+}
+
+.tag-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+}
+
+.tag-pill:nth-child(odd) { transform: rotate(-1deg); }
+.tag-pill:nth-child(even) { transform: rotate(1deg); }
+
+/* ---------- Article page ---------- */
+
+.article-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  line-height: 1.1;
+  margin: 0.9rem 0 0.4rem;
+}
+
+.byline {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin: 0 0 1.75rem;
+}
+
+.card-byline {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  opacity: 0.55;
+  margin: -0.3rem 0 0.5rem;
+}
+
+.article-body {
+  font-size: 1.08rem;
+}
+
+.article-body p {
+  margin: 0 0 1.25rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 2.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent-red);
+}
+
+/* ---------- Media blocks ---------- */
+/* These float alongside the paragraph they're placed next to in the */
+/* Markdown file, magazine-pullout style. They stack full-width on mobile. */
+
+.media-block {
+  float: right;
+  width: 260px;
+  margin: 0 0 1.5rem 1.75rem;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  background: var(--paper-dim);
+}
+
+.media-block img {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+}
+
+.media-caption {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  opacity: 0.75;
+  margin: 0.5rem 0 0;
+}
+
+.media-quote {
+  border-left: 4px solid var(--accent-red);
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 0.25rem 0 0.25rem 1rem;
+}
+
+.media-quote-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  margin: 0;
+}
+
+.media-embed-wrap {
+  position: relative;
+  width: 100%;
