@@ -281,6 +281,30 @@ main {
   border-bottom: 2px solid var(--accent-red);
 }
 
+.article-nav {
+  clear: both;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--border);
+}
+
+.article-nav-link {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink);
+  text-decoration: none;
+  max-width: 45%;
+  line-height: 1.4;
+}
+
+.article-nav-link:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent-red);
+}
+
 /* ---------- Media blocks ---------- */
 /* These float alongside the paragraph they're placed next to in the */
 /* Markdown file, magazine-pullout style. They stack full-width on mobile. */
