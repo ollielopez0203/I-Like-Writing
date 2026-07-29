@@ -45,6 +45,19 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  eleventyConfig.addFilter("isoDate", function (dateObj) {
+    return new Date(dateObj).toISOString().split("T")[0];
+  });
+
+  // Rough reading time estimate from rendered HTML content
+  eleventyConfig.addFilter("readingTime", function (html) {
+    if (!html) return "";
+    const text = html.replace(/<[^>]*>/g, " ");
+    const words = text.trim().split(/\s+/).filter(Boolean).length;
+    const minutes = Math.max(1, Math.round(words / 200));
+    return minutes + " min read";
+  });
+  
   // ---- Per-tag color system ----
   // Every tag gets a consistent color automatically, picked from this palette
   // based on the tag's name. Add tags freely through the CMS — no need to
