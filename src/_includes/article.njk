@@ -3,7 +3,7 @@ layout: base.njk
 ---
 <article class="article">
   <div class="stamp-row">
-    <span class="date-mono">{{ date | readableDate }}</span>
+    <span class="date-mono">{{ date | readableDate }} &middot; {{ content | readingTime }}</span>
     {% for tag in tags %}
     <span class="tag-pill" style="background: {{ tag | tagColor }}; color: {{ tag | tagTextColor }};">{{ tag }}</span>
     {% endfor %}
@@ -14,6 +14,21 @@ layout: base.njk
   <div class="article-body">
     {{ content | safe }}
   </div>
+
+  {% set prevPost = collections.articles | getPreviousCollectionItem %}
+  {% set nextPost = collections.articles | getNextCollectionItem %}
+  {% if prevPost or nextPost %}
+  <nav class="article-nav">
+    {% if prevPost %}
+    <a class="article-nav-link" href="{{ prevPost.url }}">&larr; {{ prevPost.data.title }}</a>
+    {% else %}
+    <span></span>
+    {% endif %}
+    {% if nextPost %}
+    <a class="article-nav-link" href="{{ nextPost.url }}">{{ nextPost.data.title }} &rarr;</a>
+    {% endif %}
+  </nav>
+  {% endif %}
 
   <section class="comments">
     <h2 class="comments-heading">Comments</h2>
