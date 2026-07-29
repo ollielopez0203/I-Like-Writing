@@ -29,11 +29,7 @@
 </head>
 <body>
   <header class="site-header">
-    {% if page.url == "/" %}
     <a class="wordmark typing" href="/"><span id="typed-title"></span><span class="cursor"></span></a>
-    {% else %}
-    <a class="wordmark" href="/">I Like <span class="accent-mark">Writing</span></a>
-    {% endif %}
     <p class="tagline">short essays, articles, and other works of mine. sometimes i have help.</p>
   </header>
 
@@ -42,10 +38,9 @@
   </main>
 
   <footer class="site-footer">
-    <p>I Like Writing &mdash; built by hand, published on purpose.</p>
+    <p>thanks for reading.</p>
   </footer>
 
-  {% if page.url == "/" %}
   <script>
     (function () {
       var target = document.getElementById("typed-title");
@@ -110,6 +105,5 @@
       });
     })();
   </script>
-  {% endif %}
 </body>
 </html>
