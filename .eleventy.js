@@ -13,7 +13,7 @@ module.exports = function (eleventyConfig) {
   // update the "url" value below so shared links resolve correctly.
   eleventyConfig.addGlobalData("site", function () {
     return {
-      url: "https://REPLACE-WITH-YOUR-NETLIFY-URL.netlify.app",
+      url: "https://i-like-writing.netlify.app",
       name: "I Like Writing",
       description: "short essays, articles, and other works of mine. sometimes i have help.",
     };
