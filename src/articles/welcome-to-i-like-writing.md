@@ -1,12 +1,13 @@
 ---
 layout: article.njk
-title: English Speakers
-date: 2026-07-20
-author: Oliver
+title: It is a Privilege to Speak English
+date: 2026-08-06T17:32:00.000+10:00
+author: Oliver Lopez
 tags:
   - essay
   - culture
-excerpt: ""
+excerpt: I had a chat with my parents about this earlier today, so here are some
+  of my thoughts on the matter.
 ---
 It is not much of a stretch to say that the average English speaker does not appreciate their luck of the draw. I mean a few things by this. 
 
