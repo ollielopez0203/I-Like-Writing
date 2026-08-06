@@ -6,4 +6,6 @@ author: Oliver
 tags:
   - essay
 ---
-jdjsj
+This whole manosphere thing is concerning me, and there are some implications that I can't get out of my head about it. Allow me to vent.
+
+Firstly, let's just start with the type of man it invites into its fold. These are men
