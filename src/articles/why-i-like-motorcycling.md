@@ -4,6 +4,7 @@ date: 2026-08-07T20:57:00.000+10:00
 author: Justin
 tags:
   - essay
+  - personal
 ---
 I think a lot, maybe even all of what I'm going to say here might be analogous to your own passions, but I can only speak from my experience. The fact that it might be relatable and transferable is also pretty cool, and why I think it's worth sharing.
 
