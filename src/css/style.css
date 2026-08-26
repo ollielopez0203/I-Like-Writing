@@ -342,13 +342,18 @@ main {
 }
 
 .media-quote {
-  border-left: 4px solid var(--accent-red);
-  border-top: none;
-  border-right: none;
-  border-bottom: none;
+  float: none;
+  width: auto;
+  clear: both;
+  border: none;
   border-radius: 0;
-  background: transparent;
-  padding: 0.25rem 0 0.25rem 1rem;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='96' viewBox='0 0 130 96'%3E%3Cpath d='M4 10 C 5 34, 3 58, 4 88' stroke='%23B23A2E' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M8 15 C 9 38, 7 60, 8 83' stroke='%23B23A2E' stroke-width='1.4' fill='none' stroke-linecap='round' opacity='0.5'/%3E%3Cpath d='M1 5 C 38 2, 76 6, 112 3' stroke='%23B23A2E' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='96' viewBox='0 0 130 96'%3E%3Cpath d='M126 8 C 127 32, 125 58, 126 86' stroke='%23B23A2E' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M122 13 C 121 36, 123 58, 122 81' stroke='%23B23A2E' stroke-width='1.4' fill='none' stroke-linecap='round' opacity='0.5'/%3E%3Cpath d='M129 91 C 92 94, 54 90, 18 93' stroke='%23B23A2E' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat, no-repeat;
+  background-position: left top, right bottom;
+  background-size: 130px 96px, 130px 96px;
+  margin: 1.75rem 0;
+  padding: 1.15rem 1.5rem 1.25rem 1.5rem;
 }
 
 .media-quote-text {
