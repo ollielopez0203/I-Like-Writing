@@ -20,4 +20,6 @@ To ride means accepting that the miracle that is your life, utterly invaluable a
 
 Maybe you have something in your life that makes you feel this way. At the end of the day, I don't think it's actually about bikes. It's just about doing something you love, and I love it because I can project my worldview and feelings onto it. One could argue that any of our hobbies are just a manifestation of the same thing. As Richard Feynman once said, 'nearly anything is interesting if you go into it deeply enough.'
 
-"It's not difficult to communicate what it's like to ride a motorcycle, 'cause if you've ridden a bicycle, you kinda get it. For me, it's the visceral quality of it, the vibration, the wind, the sound." - Keanu Reeves
+
+
+*"It's not difficult to communicate what it's like to ride a motorcycle, 'cause if you've ridden a bicycle, you kinda get it. For me, it's the visceral quality of it, the vibration, the wind, the sound." - Keanu Reeves*
