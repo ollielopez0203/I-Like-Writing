@@ -11,4 +11,4 @@ Sometimes you just get it. It's a mixture of feeling and understanding. It's int
 
 And Im so desperate to capture the moment, to capture the contents and lucidity of the thought, for fear that I will lose it forever, and that I may never again think the same thought, and so never be the person I wanted to be, the person who thought that thought and embodied it. But if I once thought it and so experienced it, why isn't that enough? Maybe the answer to it all, will just be this. A thought or feeling, in passing. And it made perfect sense in that moment, and it never made sense again. But it made sense for that moment, and so you did it. You reached it. That was what you were looking for. 
 
-'Why call it anything? Names are such question beggars. Why not be content with just knowing that it happened?'
+*'Why call it anything? Names are such question beggars. Why not be content with just knowing that it happened?'*
