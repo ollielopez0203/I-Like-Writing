@@ -3,7 +3,7 @@ title: A Meditation on the Thing
 date: 2025-08-22T00:59:00.000+10:00
 author: Justin Brown
 tags:
-  - Personal
+  - personal
 excerpt: "'Know it for what it is, an ineffable fact beyond words, beyond reason
   and explanation. Know it in the raw. Know it as a mystery'"
 ---
