@@ -93,29 +93,45 @@ module.exports = function (eleventyConfig) {
   //   {% media "audio", "https://open.spotify.com/embed/track/XXXX", "Optional caption" %}
   //   {% media "video", "https://www.youtube.com/embed/XXXX", "Optional caption" %}
   eleventyConfig.addShortcode("media", function (type, a, b) {
+    function esc(s) { return String(s == null ? "" : s); }
+
     if (type === "image") {
-      const [src, caption] = [a, b];
-      return `<aside class="media-block media-image">
-        <img src="${src}" alt="${caption || ""}" loading="lazy">
-        ${caption ? `<p class="media-caption">${caption}</p>` : ""}
-      </aside>`;
+      var src = esc(a), caption = esc(b);
+      return '<aside class="media-block media-image">' +
+        '<img src="' + src + '" alt="' + caption + '" loading="lazy">' +
+        (caption ? '<p class="media-caption">' + caption + '</p>' : '') +
+        '</aside>';
     }
+
     if (type === "quote") {
-      const [text, source] = [a, b];
-      return `<aside class="media-block media-quote">
-        <p class="media-quote-text">&ldquo;${text}&rdquo;</p>
-        ${source ? `<p class="media-caption">&mdash; ${source}</p>` : ""}
-      </aside>`;
+      // Split the quote on blank lines so multi-paragraph quotes each get
+      // their own styled paragraph. The whole thing is returned on a single
+      // line, otherwise Markdown breaks the HTML block at the first blank
+      // line and the rest of the quote loses its styling.
+      var paras = esc(a).split(/\n\s*\n/).map(function (p) {
+        return p.trim();
+      }).filter(Boolean);
+      var source = esc(b);
+      var body = paras.map(function (p, i) {
+        var open = i === 0 ? "&ldquo;" : "";
+        var close = i === paras.length - 1 ? "&rdquo;" : "";
+        return '<p class="media-quote-text">' + open + p + close + '</p>';
+      }).join("");
+      return '<aside class="media-block media-quote">' + body +
+        (source ? '<p class="media-caption">&mdash; ' + source + '</p>' : '') +
+        '</aside>';
     }
+
     if (type === "audio" || type === "video") {
-      const [embedUrl, caption] = [a, b];
-      return `<aside class="media-block media-${type}">
-        <div class="media-embed-wrap">
-          <iframe src="${embedUrl}" loading="lazy" allow="encrypted-media; autoplay; fullscreen" frameborder="0"></iframe>
-        </div>
-        ${caption ? `<p class="media-caption">${caption}</p>` : ""}
-      </aside>`;
+      var embedUrl = esc(a), cap = esc(b);
+      return '<aside class="media-block media-' + type + '">' +
+        '<div class="media-embed-wrap">' +
+        '<iframe src="' + embedUrl + '" loading="lazy" allow="encrypted-media; autoplay; fullscreen" frameborder="0"></iframe>' +
+        '</div>' +
+        (cap ? '<p class="media-caption">' + cap + '</p>' : '') +
+        '</aside>';
     }
+
     return "";
   });
 
