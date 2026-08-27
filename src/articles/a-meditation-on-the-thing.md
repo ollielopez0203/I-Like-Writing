@@ -1,6 +1,6 @@
 ---
 title: A Meditation on the Thing
-date: 2025-08-22T01:39:00.000+10:00
+date: 2025-08-22T00:59:00.000+10:00
 author: Justin
 tags:
   - Personal
